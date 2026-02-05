@@ -249,3 +249,101 @@ footer {
         font-size: 2rem;
     }
 }
+
+.project-detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 5%;
+}
+
+.hero-project {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.main-poster {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.project-info h1 {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+}
+
+.meta {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 1rem;
+}
+
+.director, .genre-tags {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.trailer-btn {
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background: #ff4d4d;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.trailer-btn:hover {
+    background: #e63939;
+}
+
+.description, .gallery, .cast, .reviews {
+    margin-bottom: 4rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
+.reviews .review {
+    background: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #ff4d4d;
+}
+
+.review-author {
+    font-weight: bold;
+    color: #ff4d4d;
+    margin-bottom: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .hero-project {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .main-poster {
+        max-width: 320px;
+    }
+}
