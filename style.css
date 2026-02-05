@@ -469,3 +469,36 @@ footer {
         gap: 3rem;
     }
 }
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.prev-btn { left: 2%; }
+.next-btn { right: 2%; }
+
+.slider-btn:hover {
+    background: rgba(255, 77, 77, 0.7);
+}
+
+.feature-card, .project-card, .review, .contact-form {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
