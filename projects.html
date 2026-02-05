@@ -16,8 +16,15 @@
         </nav>
     </header>
 
-    <section class="search-bar">
-        <input type="text" id="search" placeholder="Поиск по названию проекта, жанру...">
+    <section class="search-bar compact">
+        <input type="text" id="searchInput" placeholder="Поиск...">
+        <select id="sortSelect">
+            <option value="">Сортировка</option>
+            <option value="title-asc">А → Я</option>
+            <option value="title-desc">Я → А</option>
+            <option value="year-desc">2026 → 2024</option>
+            <option value="year-asc">2024 → 2026</option>
+        </select>
     </section>
 
     <section class="projects-grid">
@@ -67,5 +74,6 @@
     <footer>
         <p>© 2026 FilmWorks Studio.</p>
     </footer>
+    <script src="script.js" defer></script>
 </body>
 </html>

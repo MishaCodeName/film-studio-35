@@ -113,28 +113,6 @@ nav a.active {
     box-shadow: 0 12px 30px rgba(255, 77, 77, 0.12);
 }
 
-.search-bar {
-    padding: 2.5rem 8%;
-    background: #111;
-    text-align: center;
-}
-
-.search-bar input {
-    width: 100%;
-    max-width: 700px;
-    padding: 1rem 1.4rem;
-    font-size: 1.1rem;
-    border: 1px solid #444;
-    border-radius: 8px;
-    background: #1a1a1a;
-    color: #eee;
-}
-
-.search-bar input:focus {
-    outline: none;
-    border-color: #ff4d4d;
-    box-shadow: 0 0 0 4px rgba(255, 77, 77, 0.18);
-}
 
 .projects-grid {
     display: grid;
@@ -501,4 +479,28 @@ footer {
 .visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.search-bar.compact {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 8%;
+    justify-content: center;
+    background: #111;
+}
+
+.search-bar.compact input,
+.search-bar.compact select {
+    padding: 0.85rem 1.2rem;
+    font-size: 1rem;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: #1a1a1a;
+    color: #eee;
+    min-width: 160px;
+}
+
+.search-bar.compact input {
+    flex: 1;
+    max-width: 450px;
 }

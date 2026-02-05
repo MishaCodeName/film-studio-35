@@ -62,3 +62,74 @@ const initSlider = () => {
 if (document.querySelector('.hero-slider')) {
     initSlider();
 }
+
+
+// Задание 6
+
+const initProjectsSearchSort = () => {
+    const searchInput = document.getElementById('searchInput');
+    const sortSelect = document.getElementById('sortSelect');
+    const grid = document.querySelector('.projects-grid');
+
+    if (!searchInput || !sortSelect || !grid) return;
+
+    const allCards = Array.from(grid.querySelectorAll('.project-card'));
+
+    function updateCards() {
+        const query = searchInput.value.trim().toLowerCase();
+        const sortMode = sortSelect.value;
+
+        let visibleCards = allCards.filter(card => {
+            if (!query) return true;
+
+            const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+            const year = card.dataset.year || '';
+            const genre = card.dataset.genre?.toLowerCase() || '';
+
+            return title.includes(query) ||
+                   year.includes(query) ||
+                   genre.includes(query);
+        });
+
+        if (sortMode) {
+            visibleCards.sort((a, b) => {
+                if (sortMode === 'title-asc') {
+                    return a.dataset.title.localeCompare(b.dataset.title, 'ru');
+                }
+                if (sortMode === 'title-desc') {
+                    return b.dataset.title.localeCompare(a.dataset.title, 'ru');
+                }
+                if (sortMode === 'year-desc') {
+                    return Number(b.dataset.year) - Number(a.dataset.year);
+                }
+                if (sortMode === 'year-asc') {
+                    return Number(a.dataset.year) - Number(b.dataset.year);
+                }
+                return 0;
+            });
+        }
+
+        grid.innerHTML = '';
+
+        if (visibleCards.length === 0) {
+            const msg = document.createElement('p');
+            msg.textContent = 'Ничего не найдено';
+            msg.style.padding = '4rem 1rem';
+            msg.style.textAlign = 'center';
+            msg.style.fontSize = '1.4rem';
+            msg.style.color = '#777';
+            grid.appendChild(msg);
+        } else {
+            visibleCards.forEach(card => grid.appendChild(card));
+        }
+    }
+
+    searchInput.addEventListener('input', updateCards);
+    sortSelect.addEventListener('change', updateCards);
+
+    updateCards();
+};
+
+if (document.querySelector('.search-bar.compact')) {
+    initProjectsSearchSort();
+}
