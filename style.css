@@ -504,3 +504,101 @@ footer {
     flex: 1;
     max-width: 450px;
 }
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox.hidden {
+    display: none;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(255,77,77,0.3);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    background: rgba(0,0,0,0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.lightbox-close:hover {
+    background: #ff4d4d;
+}
+
+.add-review {
+    background: #1a1a1a;
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin: 3rem 0;
+    border: 1px solid #333;
+    max-width: 700px;
+}
+
+.add-review h2 {
+    margin-bottom: 1.5rem;
+}
+
+#reviewForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+#reviewAuthor,
+#reviewText {
+    padding: 0.9rem;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #222;
+    color: #eee;
+    font-size: 1rem;
+}
+
+#reviewText {
+    resize: vertical;
+}
+
+#reviewForm button {
+    padding: 1rem;
+    background: #ff4d4d;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#reviewForm button:hover {
+    background: #e63939;
+}

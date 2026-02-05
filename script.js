@@ -133,3 +133,90 @@ const initProjectsSearchSort = () => {
 if (document.querySelector('.search-bar.compact')) {
     initProjectsSearchSort();
 }
+
+// Задание 7
+const initProjectDetail = () => {
+    if (!document.querySelector('.project-detail')) return;
+
+    const galleryImages = document.querySelectorAll('.gallery-grid img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    if (galleryImages.length > 0 && lightbox) {
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        lightbox.addEventListener('click', e => {
+            if (e.target === lightbox) {
+                closeBtn.click();
+            }
+        });
+    }
+
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewAuthor = document.getElementById('reviewAuthor');
+    const reviewText = document.getElementById('reviewText');
+    const reviewsSection = document.querySelector('.reviews');
+
+    if (reviewForm && reviewsSection) {
+        const projectId = 'project1'; 
+        let reviews = JSON.parse(localStorage.getItem(`reviews_${projectId}`)) || [];
+
+        function renderReviews() {
+            const existingReviews = reviewsSection.querySelectorAll('.review.dynamic');
+            existingReviews.forEach(el => el.remove());
+
+            reviews.forEach(review => {
+                const div = document.createElement('div');
+                div.classList.add('review', 'dynamic');
+                div.innerHTML = `
+                    <p class="review-author">${review.author} • ${new Date(review.date).toLocaleDateString('ru-RU')}</p>
+                    <p>${review.text}</p>
+                `;
+                reviewsSection.appendChild(div);
+            });
+        }
+
+        renderReviews(); 
+
+        reviewForm.addEventListener('submit', e => {
+            e.preventDefault();
+
+            const author = reviewAuthor.value.trim();
+            const text = reviewText.value.trim();
+
+            if (author && text) {
+                reviews.push({
+                    author,
+                    text,
+                    date: new Date().toISOString()
+                });
+
+                localStorage.setItem(`reviews_${projectId}`, JSON.stringify(reviews));
+
+                reviewAuthor.value = '';
+                reviewText.value = '';
+
+                renderReviews();
+            }
+        });
+    }
+};
+
+if (document.querySelector('.project-detail')) {
+    initProjectDetail();
+}

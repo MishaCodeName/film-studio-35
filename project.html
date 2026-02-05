@@ -44,6 +44,11 @@
             </div>
         </section>
 
+        <div id="lightbox" class="lightbox hidden">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-img" src="" alt="Увеличенный кадр">
+        </div>
+
         <section class="cast">
             <h2>В главных ролях</h2>
             <ul>
@@ -57,17 +62,36 @@
         <section class="reviews">
             <h2>Отзывы (статические)</h2>
             <div class="review">
-                <p class="review-author">Зритель #1 • 4.8/5</p>
+                <p class="review-author">Зритель #1 • 20.1.2026</p>
                 <p>Очень атмосферно, держит в напряжении до последней серии. Рекомендую!</p>
             </div>
             <div class="review">
-                <p class="review-author">Кинокритик • 4.5/5</p>
+                <p class="review-author">Кинокритик • 01.02.2026</p>
                 <p>Сильный сценарий и отличная операторская работа. Один из лучших сериалов.</p>
             </div>
             <div class="review">
-                <p class="review-author">Зритель #2 • 5/5</p>
+                <p class="review-author">Зритель #2 • 08.01.2026</p>
                 <p>Не могла оторваться, плакала в финале. Браво!</p>
             </div>
+        </section>
+
+        <section class="add-review">
+            <h2>Оставить отзыв</h2>
+            <form id="reviewForm">
+                <input 
+                     type="text" 
+                     id="reviewAuthor" 
+                    placeholder="Ваше имя" 
+                    required
+                    >
+                    <textarea 
+                        id="reviewText" 
+                        placeholder="Ваш отзыв..." 
+                        rows="4" 
+                        required
+                    ></textarea>
+                <button type="submit">Отправить отзыв</button>
+            </form>
         </section>
     </main>
 
