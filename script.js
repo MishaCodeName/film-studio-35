@@ -220,3 +220,66 @@ const initProjectDetail = () => {
 if (document.querySelector('.project-detail')) {
     initProjectDetail();
 }
+
+// Задание 8
+
+const initFormValidation = () => {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const roleSelect = document.getElementById('role');
+    const messageTextarea = document.getElementById('message');
+
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const roleError = document.getElementById('roleError');
+    const messageError = document.getElementById('messageError');
+    const successMsg = document.getElementById('formSuccess');
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        let isValid = true;
+
+        [nameError, emailError, roleError, messageError].forEach(el => el.textContent = '');
+        successMsg.classList.add('hidden');
+
+        if (!nameInput.value.trim()) {
+            nameError.textContent = 'Пожалуйста, введите имя';
+            isValid = false;
+        }
+
+        if (!emailInput.value.trim()) {
+            emailError.textContent = 'Пожалуйста, введите email';
+            isValid = false;
+        } else if (!isValidEmail(emailInput.value.trim())) {
+            emailError.textContent = 'Некорректный email';
+            isValid = false;
+        }
+
+        if (!roleSelect.value) {
+            roleError.textContent = 'Выберите тему обращения';
+            isValid = false;
+        }
+
+        if (!messageTextarea.value.trim()) {
+            messageError.textContent = 'Напишите сообщение';
+            isValid = false;
+        }
+
+        if (isValid) {
+            successMsg.classList.remove('hidden');
+            form.reset(); 
+        }
+    });
+};
+
+if (document.getElementById('contactForm')) {
+    initFormValidation();
+}
